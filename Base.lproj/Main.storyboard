@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="height" constant="90" id="nPi-5K-pUu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="55"/>
-                                <color key="textColor" red="0.5" green="0.16450871862999739" blue="0.39126440211025482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.9882352941176471" green="0.16078431372549021" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="2"/>
@@ -64,15 +64,48 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JS-2a-B5O">
+                                <rect key="frame" x="306" y="120" width="22" height="22"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjZ-mB-ISs">
+                                <rect key="frame" x="191" y="288" width="167" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="View/Upload Picture">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="AmericanTypewriter"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgf-MV-MAI">
+                                <rect key="frame" x="16" y="511" width="168" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Schedule Reminders">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="AmericanTypewriter"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.65490196078431373" green="0.94901960784313721" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.67883123332134432" green="0.90705935116987491" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4JS-2a-B5O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="6kW-Aa-PAE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4JS-2a-B5O" secondAttribute="trailing" constant="47" id="Dl8-SW-pyl"/>
                             <constraint firstItem="dUc-Va-QXg" firstAttribute="top" secondItem="TwY-sx-xSp" secondAttribute="bottom" constant="274" id="ENU-LC-TpF"/>
+                            <constraint firstItem="Pgf-MV-MAI" firstAttribute="top" secondItem="Jz7-FW-bTV" secondAttribute="bottom" constant="139" id="HFN-Fd-kmI"/>
+                            <constraint firstItem="dUc-Va-QXg" firstAttribute="leading" secondItem="Pgf-MV-MAI" secondAttribute="trailing" constant="16" id="JB4-I6-Vaf"/>
                             <constraint firstItem="TwY-sx-xSp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="Kn0-VV-fUK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dUc-Va-QXg" secondAttribute="trailing" constant="25" id="MpP-kU-rbe"/>
                             <constraint firstItem="TwY-sx-xSp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RkZ-eh-sTk"/>
+                            <constraint firstItem="KjZ-mB-ISs" firstAttribute="leading" secondItem="Jz7-FW-bTV" secondAttribute="trailing" constant="16" id="UyX-xI-184"/>
                             <constraint firstItem="Jz7-FW-bTV" firstAttribute="top" secondItem="TwY-sx-xSp" secondAttribute="bottom" constant="52" id="YrQ-PN-gcJ"/>
                             <constraint firstItem="TwY-sx-xSp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eQK-Wd-VPh"/>
+                            <constraint firstItem="KjZ-mB-ISs" firstAttribute="top" secondItem="TwY-sx-xSp" secondAttribute="bottom" constant="118" id="gL2-UA-1m7"/>
                             <constraint firstItem="Jz7-FW-bTV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="rMv-wn-Oda"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
