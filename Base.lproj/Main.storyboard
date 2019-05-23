@@ -109,6 +109,9 @@
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u5C-jZ-M5l"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Df7-up-T1J">
                                 <rect key="frame" x="200" y="557" width="120" height="20"/>

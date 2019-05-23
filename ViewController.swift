@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Photos
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -15,6 +15,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func addPhoto(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            PHPhotoLibrary.requestAuthorization { (status) in
+                switch status{
+                case .authorized:
+                    let myPickerController = UIImagePickerController()
+                    myPickerController.sourceType = .photoLibrary
+                    self.present(myPickerController, animated: true)
+                default:
+                    break
+//                case .notDetermined:
+//                    <#code#>
+//                case .restricted:
+//                    <#code#>
+//                case .denied:
+//                    <#code#>
+                }
+            }
+        }
+    }
+    
 }
 
