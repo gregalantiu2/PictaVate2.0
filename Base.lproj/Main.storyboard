@@ -157,7 +157,7 @@
         <!--View Controller-->
         <scene sceneID="377-ZU-Lum">
             <objects>
-                <viewController id="N5S-ca-D8f" sceneMemberID="viewController">
+                <viewController id="N5S-ca-D8f" customClass="ViewController" customModule="Pictavate2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aBH-G7-hQR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,6 +170,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="76U-qR-qe2"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="cdZ-PI-tGc" id="fUg-dc-9uD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLB-Oy-PRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

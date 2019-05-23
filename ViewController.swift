@@ -10,6 +10,8 @@ import UIKit
 import Photos
 class ViewController: UIViewController {
 
+    @IBOutlet weak var picta: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
                 switch status{
                 case .authorized:
                     let myPickerController = UIImagePickerController()
+                    myPickerController.delegate = self
                     myPickerController.sourceType = .photoLibrary
                     self.present(myPickerController, animated: true)
                 default:
@@ -38,3 +41,13 @@ class ViewController: UIViewController {
     
 }
 
+
+extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            self.picta.image = image
+        }
+        
+        dismiss(animated:true)
+    }
+}
