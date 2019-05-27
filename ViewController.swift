@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var picta: UIImageView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,7 +46,9 @@ class ViewController: UIViewController {
 extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            self.picta.image = image
+            let data = image.pngData()
+            UserDefaults.standard.set(data, forKey: "myImageKey")
+            UserDefaults.standard.synchronize()
         }
         
         dismiss(animated:true)
