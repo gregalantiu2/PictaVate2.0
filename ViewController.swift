@@ -9,8 +9,6 @@
 import UIKit
 import Photos
 class ViewController: UIViewController {
-
-    @IBOutlet weak var picta: UIImageView!
     
 
     override func viewDidLoad() {
@@ -40,17 +38,38 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func removePhoto(_ sender: Any) {
+        let data: Data? = nil
+        UserDefaults.standard.set(data, forKey: "myImageKey")
+    }
 }
 
 
 extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            let data = image.pngData()
+            let pickedImage = rotateImage(image: image)
+            let data = pickedImage.pngData()
             UserDefaults.standard.set(data, forKey: "myImageKey")
             UserDefaults.standard.synchronize()
         }
         
         dismiss(animated:true)
     }
+}
+
+func rotateImage(image: UIImage) -> UIImage {
+    
+    if (image.imageOrientation == UIImage.Orientation.up ) {
+        return image
+    }
+    
+    UIGraphicsBeginImageContext(image.size)
+    
+    image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+    let copy = UIGraphicsGetImageFromCurrentImageContext()
+    
+    UIGraphicsEndImageContext()
+    
+    return copy!
 }

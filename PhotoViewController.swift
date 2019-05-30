@@ -37,6 +37,9 @@ class PhotoViewController: UIViewController {
         Quotes = [Quote(quote: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller"),Quote(quote: "Work hard in silence, let your success be your noise.", author: "Frank Ocean")]
         
         PickQuote()
+        
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
     }
     
     func PickQuote(){
@@ -49,5 +52,9 @@ class PhotoViewController: UIViewController {
         
     }
 
+    @IBAction func photoScreen(_ sender: Any) {
+        dismiss(animated: true, completion: nil);
+    }
+    
 }
 
