@@ -10,13 +10,110 @@ import UIKit
 import Photos
 class ViewController: UIViewController {
     
-
+    @IBOutlet weak var removeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        checkPhotoUploadStatus()
+    }
+    
+    //Checks to see if photo exists and whether or not to show the remove button
+    func checkPhotoUploadStatus(){
+        if UserDefaults.standard.data(forKey: "myImageKey") == nil
+        {
+            removeButton.isHidden = true
+        }
+        else{
+            removeButton.isHidden = false
+        }
     }
 
+    @IBAction func viewPicture(_ sender: Any) {
+        if UserDefaults.standard.data(forKey: "myImageKey") == nil
+        {
+            viewAlert(title: "Upload Motivating Picture", message: "Looks like you do not have a picture uploaded yet")
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "PhotoView")
+            controller.modalTransitionStyle = .crossDissolve
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func viewAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Upload", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.uploadPhoto()
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert,animated:true)
+    }
+    
     @IBAction func addPhoto(_ sender: Any) {
+        if UserDefaults.standard.data(forKey: "myImageKey") == nil
+        {
+            uploadPhoto()
+        }
+        else
+        {
+            existingPicAlert(title: "Replace Current Picture?", message: "By continuing, you will overwrite your current motivation picture.")
+        }
+    }
+    
+    @IBAction func removePhoto(_ sender: Any) {
+//        let data: Data? = nil
+//        UserDefaults.standard.set(data, forKey: "myImageKey")
+        deleteAlert(title: "Remove Picture", message: "This will remove your picture and clear all scheduled reminders. If you want to replace your picture instead and keep your scheduled times, click 'Upload Picture'")
+    }
+    
+    func deleteAlert(title: String, message: String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            let data: Data? = nil
+            UserDefaults.standard.set(data, forKey: "myImageKey")
+            self.checkPhotoUploadStatus()
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.checkPhotoUploadStatus()
+        }))
+        
+        self.present(alert,animated:true)
+        
+    }
+    
+    func existingPicAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Replace", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.uploadPhoto()
+            self.checkPhotoUploadStatus()
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.checkPhotoUploadStatus()
+        }))
+        
+        self.present(alert,animated:true)
+    }
+    
+    func uploadPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             PHPhotoLibrary.requestAuthorization { (status) in
                 switch status{
@@ -27,20 +124,15 @@ class ViewController: UIViewController {
                     self.present(myPickerController, animated: true)
                 default:
                     break
-//                case .notDetermined:
-//                    <#code#>
-//                case .restricted:
-//                    <#code#>
-//                case .denied:
-//                    <#code#>
+                    //                case .notDetermined:
+                    //                    <#code#>
+                    //                case .restricted:
+                    //                    <#code#>
+                    //                case .denied:
+                    //                    <#code#>
                 }
             }
         }
-    }
-    
-    @IBAction func removePhoto(_ sender: Any) {
-        let data: Data? = nil
-        UserDefaults.standard.set(data, forKey: "myImageKey")
     }
 }
 
@@ -53,7 +145,7 @@ extension ViewController: UIImagePickerControllerDelegate,UINavigationController
             UserDefaults.standard.set(data, forKey: "myImageKey")
             UserDefaults.standard.synchronize()
         }
-        
+        self.checkPhotoUploadStatus()
         dismiss(animated:true)
     }
 }
@@ -73,3 +165,6 @@ func rotateImage(image: UIImage) -> UIImage {
     
     return copy!
 }
+
+
+

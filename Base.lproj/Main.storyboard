@@ -48,7 +48,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="7zO-C8-oud" kind="presentation" modalTransitionStyle="crossDissolve" id="gG9-gw-loR"/>
+                                    <action selector="viewPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QiM-UI-AL4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUc-Va-QXg">
@@ -168,6 +168,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="removeButton" destination="gbg-RD-vq2" id="BAs-aw-RWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,7 +179,7 @@
         <!--Photo View Controller-->
         <scene sceneID="IwX-W7-xgp">
             <objects>
-                <viewController id="7zO-C8-oud" customClass="PhotoViewController" customModule="Pictavate2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7zO-C8-oud" customClass="PhotoViewController" customModule="Pictavate2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1D4-0k-66C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
