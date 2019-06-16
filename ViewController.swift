@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var removeButton: UIButton!
     
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         checkPhotoUploadStatus()
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
     @IBAction func viewPicture(_ sender: Any) {
         if UserDefaults.standard.data(forKey: "myImageKey") == nil
         {
-            viewAlert(title: "Upload Motivating Picture", message: "Looks like you do not have a picture uploaded yet")
+            viewAlert(title: "Upload Motivating Picture", message: "First you need to upload a picture before continuing")
         }
         else
         {
@@ -41,6 +42,23 @@ class ViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
     }
+    
+    
+    @IBAction func scheduleTimes(_ sender: Any) {
+        if UserDefaults.standard.data(forKey: "myImageKey") == nil
+        {
+            viewAlert(title: "Upload Motivating Picture", message: "Looks like you do not have a picture uploaded yet")
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "TimeList")
+            controller.modalTransitionStyle = .crossDissolve
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    
     
     func viewAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
