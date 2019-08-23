@@ -324,6 +324,9 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="timesTable" destination="N4v-RM-7Ls" id="qb5-IA-ae2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUc-dm-sx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,7 +357,11 @@
                                                 <action selector="cancelButton:" destination="JHh-66-0wp" id="gf1-aq-RWe"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kqP-TT-gfP"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kqP-TT-gfP">
+                                            <connections>
+                                                <action selector="saveTime:" destination="JHh-66-0wp" id="de0-UZ-TlX"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -362,6 +369,9 @@
                         <color key="backgroundColor" red="0.67883123329999995" green="0.90705935120000003" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="nkq-wb-8Tu"/>
                     </view>
+                    <connections>
+                        <outlet property="dateSelected" destination="XIV-f3-ufT" id="vIa-9y-cRl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnt-k3-RJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

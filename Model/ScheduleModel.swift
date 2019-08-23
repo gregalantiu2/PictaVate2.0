@@ -2,14 +2,12 @@ import UIKit
 
 class ScheduleModel{
     let id: UUID
-    var time: String
-    var times: [String]
+    var time: String?
+    var times: [Date?]
     var image: UIImage?
     
-    init(time: String){
-        self.time = time
+    init(){
         self.times = []
-        times.append(time)
         id = UUID()
     }
 }

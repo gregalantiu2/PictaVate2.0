@@ -8,17 +8,10 @@
 
 import UIKit
 
-struct Quote{
-    var quote: String!
-    var author: String!
-}
-
 class PhotoViewController: UIViewController {
 
-    var Quotes = [Quote]()
+    var objQuotes = Quotes()
     
-    var QuoteID = Int()
-
     @IBOutlet weak var picta: UIImageView!
     
     @IBOutlet weak var displayQuote: UILabel!
@@ -33,23 +26,10 @@ class PhotoViewController: UIViewController {
             self.picta.image = UIImage(data: imageData)
         }
         
-        //Fill Motivational Quotes
-        Quotes = [Quote(quote: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller"),Quote(quote: "Work hard in silence, let your success be your noise.", author: "Frank Ocean")]
-        
-        PickQuote()
+        objQuotes.PickQuote(displayQuote: displayQuote,displayAuthor: displayAuthor)
         
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
 
-    }
-    
-    func PickQuote(){
-        
-        QuoteID = Int.random(in: 0..<Quotes.count)
-        
-        displayQuote.text = Quotes[QuoteID].quote
-        
-        displayAuthor.text = "-" + Quotes[QuoteID].author
-        
     }
 
     @IBAction func photoScreen(_ sender: Any) {
