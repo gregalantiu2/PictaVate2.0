@@ -8,31 +8,38 @@
 
 import UIKit
 
-class TimeListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class TimeListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
-    var objSchedule = ScheduleModel()
+    //var objSchedule = ScheduleModel()
+    var scheduleTime: [ScheduleModel] = []
     let formatter = DateFormatter()
-
-        
+    
     @IBOutlet weak var dateSelected: UIDatePicker!
     
-    @IBOutlet weak var timesTable: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        
         //Test Data
-        let time1String = "05:30 PM"
-        let time1Time = formatter.date(from: time1String)
-        
-        
-        objSchedule.times.append(time1Time)
-        //objSchedule.times.append("test2")
+//        let time1String = "05:30 PM"
+//        let time1Time = formatter.date(from: time1String)
+//
+//        let time2String = "06:30 PM"
+//        let time2Time = formatter.date(from: time1String)
+//
+//
+//        objSchedule.times.append(time1Time)
+//        objSchedule.times.append(time2Time)
     }
     
     //Done Button return to main screen
@@ -42,21 +49,25 @@ class TimeListViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return (objSchedule.times.count)
+        return (scheduleTime.count)
     }
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        
-        if objSchedule.times[indexPath.row] != nil {
-            cell.textLabel?.text = formatter.string(from: objSchedule.times[indexPath.row]!)
+        if tableView == self.tableView
+        {
+            let time = scheduleTime[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell") as! TimeViewCell
+            
+            cell.setTime(scheduleTime: time)
+            
+            cell.backgroundColor = UIColor(named: "White")
+            return(cell)
         }
         
-        cell.backgroundColor = UIColor(named: "White")
-        return(cell)
+        return UITableViewCell()
     }
     
     //Datepicker View Section
@@ -66,7 +77,22 @@ class TimeListViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     
     @IBAction func saveTime(_ sender: Any) {
-        objSchedule.times.append(dateSelected.date)
+        let timeConvert = dateSelected.date
+        //let currentDateTime = Date()
+
+        let stringTime = formatter.string(from: timeConvert)
+        
+        let scheduleModel = ScheduleModel(time: stringTime)
+        
+        scheduleTime.append(scheduleModel)
+        
+        let index = IndexPath(row: scheduleTime.count - 1, section: 0)
+                
+        tableView.beginUpdates()
+        tableView.insertRows(at: [index], with: .automatic)
+        tableView.endUpdates()
+        
+    
         dismiss(animated: true, completion: nil)
         
     }

@@ -292,20 +292,37 @@
                                 <color key="backgroundColor" red="0.67883123329999995" green="0.90705935120000003" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.67883123329999995" green="0.90705935120000003" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Umd-cc-udL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeCell" id="Umd-cc-udL" customClass="TimeViewCell" customModule="Pictavate2_0" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Umd-cc-udL" id="8EK-pY-lLq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrJ-FN-I1E">
+                                                    <rect key="frame" x="15" y="11" width="42" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.67883123329999995" green="0.90705935120000003" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="lrJ-FN-I1E" firstAttribute="bottom" secondItem="8EK-pY-lLq" secondAttribute="bottomMargin" id="2vE-E6-ohl"/>
+                                                <constraint firstItem="lrJ-FN-I1E" firstAttribute="top" secondItem="8EK-pY-lLq" secondAttribute="topMargin" id="3gX-qi-hgN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lrJ-FN-I1E" secondAttribute="trailing" constant="303" id="Uqf-fB-CUX"/>
+                                                <constraint firstItem="lrJ-FN-I1E" firstAttribute="leading" secondItem="8EK-pY-lLq" secondAttribute="leadingMargin" id="aEh-34-q9A"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.67883123329999995" green="0.90705935120000003" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="scheduledTime" destination="lrJ-FN-I1E" id="gcL-7J-oWU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="K1f-1k-ZSM" id="UUS-hR-6ys"/>
-                                    <outlet property="delegate" destination="K1f-1k-ZSM" id="Q9h-6Y-7PB"/>
+                                    <outlet property="dataSource" destination="K1f-1k-ZSM" id="G5e-Ro-BTP"/>
+                                    <outlet property="delegate" destination="K1f-1k-ZSM" id="eE2-mJ-XP7"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -325,7 +342,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="timesTable" destination="N4v-RM-7Ls" id="qb5-IA-ae2"/>
+                        <outlet property="tableView" destination="N4v-RM-7Ls" id="ego-g6-Qfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUc-dm-sx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
