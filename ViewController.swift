@@ -140,14 +140,23 @@ class ViewController: UIViewController {
                     myPickerController.delegate = self
                     myPickerController.sourceType = .photoLibrary
                     self.present(myPickerController, animated: true)
-                default:
-                    break
+                
                     //                case .notDetermined:
                     //                    <#code#>
                     //                case .restricted:
                     //                    <#code#>
-                    //                case .denied:
-                    //                    <#code#>
+//                case .denied:
+//                    let alert = UIAlertController(title: "Photo Library Permissions", message: "This app requires access to the Photos. Go into Settings to adjust permissions", preferredStyle: UIAlertController.Style.alert)
+//                    
+//                    
+//                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in
+//                        alert.dismiss(animated: true, completion: nil)
+//                    }))
+//                    
+//                    self.present(alert,animated:true)
+                    
+                default:
+                    break
                 }
             }
         }
