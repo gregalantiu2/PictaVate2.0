@@ -131,6 +131,16 @@ class ViewController: UIViewController {
         self.present(alert,animated:true)
     }
     
+    func photoLibraryDenied(){
+        let alert = UIAlertController(title: "App needs permission", message: "This app needs access to Photos. Please go to Settings and adjust permissions.", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert,animated:true)
+    }
+    
     func uploadPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             PHPhotoLibrary.requestAuthorization { (status) in
@@ -145,15 +155,8 @@ class ViewController: UIViewController {
                     //                    <#code#>
                     //                case .restricted:
                     //                    <#code#>
-//                case .denied:
-//                    let alert = UIAlertController(title: "Photo Library Permissions", message: "This app requires access to the Photos. Go into Settings to adjust permissions", preferredStyle: UIAlertController.Style.alert)
-//                    
-//                    
-//                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in
-//                        alert.dismiss(animated: true, completion: nil)
-//                    }))
-//                    
-//                    self.present(alert,animated:true)
+                case .denied:
+                    self.photoLibraryDenied() //Errors out, come back to fix
                     
                 default:
                     break

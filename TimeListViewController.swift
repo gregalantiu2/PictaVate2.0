@@ -16,19 +16,17 @@ class TimeListViewController: UIViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var dateSelected: UIDatePicker!
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        tableView.register(timeCell.self, forCellReuseIdentifier: String)
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         
-//        tableView.delegate = self
-//        tableView.dataSource = self
         
         //Test Data
 //        let time1String = "05:30 PM"
@@ -97,4 +95,18 @@ class TimeListViewController: UIViewController,UITableViewDataSource,UITableView
         
     }
     
+}
+
+class timeCell: UITableViewCell{
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews{
+        //Need to implement
+    }
 }
